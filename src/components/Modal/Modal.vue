@@ -77,14 +77,14 @@ export default {
         this.botName = this.editBotVal.name;
         this.botDescription = this.editBotVal.description;
 
-        let month = this.editBotVal.date.getMonth() + 1;
-        this.date = `${this.editBotVal.date.getFullYear()}-${
-          month < 10 ? "0" + month : month
-        }-${
-          this.editBotVal.date.getDate() < 10
-            ? "0" + this.editBotVal.date.getDate()
-            : this.editBotVal.date.getDate()
-        }`;
+        if (val) {
+          let date = new Date(this.editBotVal.date);
+
+          let month = date.getMonth() + 1;
+          this.date = `${date.getFullYear()}-${
+            month < 10 ? "0" + month : month
+          }-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`;
+        }
       }
     },
   },
