@@ -23,12 +23,16 @@ const mutations = {
 
 		for (let i in state.bots) {
 			if (state.bots[i].id === id) {
-				if (!state.bots[i].date.edit) {
-					state.bots[i].date.edit = [];
+				if (!state.bots[i].dateEdits) {
+					state.bots[i].dateEdits = [];
 				}
-				state.bots[i].date.edit.push(new Date());
+				state.bots[i].dateEdits.push(state.bots[i].date);
+				state.bots[i].date = bot.date;
+
 				state.bots[i].name = editBot.name;
 				state.bots[i].description = editBot.description;
+
+				break;
 			}
 		}
 	},
