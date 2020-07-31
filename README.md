@@ -1,8 +1,6 @@
 # vue-bot-factory-test
 
-DEMO\_: <a href="https://ponochovny.github.io/vue-add-items-build/" target="_blank">https://ponochovny.github.io/vue-add-items-build/</a>
-
-<a href="http://example.com/" target="_blank">example</a>
+DEMO: <a href="https://ponochovny.github.io/vue-add-items-build/" target="_blank">https://ponochovny.github.io/vue-add-items-build/</a>
 
 ## Project setup
 
