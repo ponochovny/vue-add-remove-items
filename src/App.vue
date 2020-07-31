@@ -1,13 +1,18 @@
 <template lang="pug">
-  .page
-    .page__title Bots List
-    button(@click="openModal") Add
-    .bots
-      ul
-        li(v-for="bot in bots" @click.self="editBot(bot)")
-          | {{bot.name}}
-          .bots__delete(@click="deleteBot(bot.id)") X
-    Modal(:isActive="isModalActive" :isEdit="isModalEdit" :editBotVal="editBotVal" @close="closeModal")
+.page
+	.page__title Bots List
+	button(@click="openModal") Add
+	.bots
+		ul
+			li(v-for="bot in bots" @click.self="editBot(bot)")
+				| {{bot.name}}
+				.bots__delete(@click="deleteBot(bot.id)") X
+	Modal(
+		:isActive="isModalActive"
+		:isEdit="isModalEdit"
+		:editBotVal="editBotVal"
+		@close="closeModal"
+	)
 </template>
 
 <script>

@@ -1,12 +1,16 @@
 <template lang="pug">
-    .modal(:class="[isActive ? 'active' : '']")
-        .modal__backdrop(@click.self="closeModal")
-            .modal__box
-                .modal__title {{ isEdit ? 'Edit the Bot' : 'Add a Bot' }}
-                input(placeholder="Name" type="text" @change="botName = $event.target.value" :value="botName")
-                textarea(placeholder="Description" @change="botDescription = $event.target.value" :value="botDescription")
-                file-uploader(@file="addFile" :reset="resetFiles")
-                button(@click="isEdit ? editBot() : botAdd();") {{isEdit ? 'Save':'Add'}}
+	.modal(:class="[isActive ? 'active' : '']")
+		.modal__backdrop(@click.self="closeModal")
+			.modal__box
+				.modal__title {{ isEdit ? 'Edit the Bot' : 'Add a Bot' }}
+				input(placeholder="Name" type="text" @change="botName = $event.target.value" :value="botName")
+				textarea(placeholder="Description" @change="botDescription = $event.target.value" :value="botDescription")
+				input(
+					type="date"
+					:value="date"
+				)
+				file-uploader(@file="addFile" :reset="resetFiles")
+				button(@click="isEdit ? editBot() : botAdd();") {{isEdit ? 'Save':'Add'}}
 </template>
 
 <script>
@@ -19,6 +23,8 @@ export default {
 			botName: '',
 			botDescription: '',
 			image: null,
+
+			date: '',
 
 			resetFiles: false,
 		};
@@ -53,9 +59,20 @@ export default {
 			if (!this.isEdit) {
 				this.botName = '';
 				this.botDescription = '';
+
+				this.date = null;
 			} else {
 				this.botName = this.editBotVal.name;
 				this.botDescription = this.editBotVal.description;
+
+				let month = this.editBotVal.date.getMonth() + 1;
+				this.date = `${this.editBotVal.date.getFullYear()}-${
+					month < 10 ? '0' + month : month
+				}-${
+					this.editBotVal.date.getDate() < 10
+						? '0' + this.editBotVal.date.getDate()
+						: this.editBotVal.date.getDate()
+				}`;
 			}
 		},
 	},
